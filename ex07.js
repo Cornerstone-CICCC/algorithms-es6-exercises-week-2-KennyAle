@@ -9,28 +9,14 @@ Not sure where to get started? It might be useful to start by creating a variabl
 */
 
 const checkAir = function (samples, threshold) {
-  // Code here!
+  let dirtySamples = samples.filter((n) => n === "dirty")
+  let percentage = dirtySamples.length / samples.length
+  return percentage > threshold ? "polluted" : "clean" 
 };
 
-console.log(
-  checkAir(
-    [
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
-    ],
-    0.3
-  )
-); // Polluted
-
 console.log(checkAir(["dirty", "dirty", "dirty", "dirty", "clean"], 0.25)); // Polluted
+
+console.log(checkAir(["clean","clean","dirty","clean","dirty","clean","clean","dirty","clean","dirty"],0.3)); // Polluted
 
 console.log(
   checkAir(["clean", "dirty", "clean", "dirty", "clean", "dirty", "clean"], 0.9)
