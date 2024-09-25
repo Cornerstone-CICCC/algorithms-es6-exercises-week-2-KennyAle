@@ -18,6 +18,9 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function (text) {
+  let url = text.split(" ")
+  let removeSpaces = url.filter((e) => e !== '')
+  return removeSpaces.join("%20")
   // Put your solution here
 };
 
