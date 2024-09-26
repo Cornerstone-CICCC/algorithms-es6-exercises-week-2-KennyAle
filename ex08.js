@@ -8,23 +8,31 @@ Instruction
 Create a function named repeatNumbers that will return a string with each of the given values repeated the appropriate number of times, if there are multiple sets of values each set should be separated by a comma. If there is only one set of values then you should omit the comma.
 */
 
+// let num = [1,5]
+// let repeated = ""
+// console.log(num)
+// while (num[1] > 0) {
+//   repeated += `${[num[0]]}`
+//   num[1]--
+// }
+// console.log(repeated)
+
 const repeatNumbers = function (data) {
-  // Put your solution here
+  let repeated = ""
+  data.forEach(num => {
+    while (num[1] > 0) {
+      repeated += `${[num[0]]}`
+      num[1]--
+    }
+    if (repeated.length >= num[1]) {
+      repeated += ", "
+    }
+  });
+  return repeated.slice(0, -2)
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111
-console.log(
-  repeatNumbers([
-    [1, 2],
-    [2, 3],
-  ])
-); // 11, 222
-console.log(
-  repeatNumbers([
-    [10, 4],
-    [34, 6],
-    [92, 2],
-  ])
-); // 10101010, 343434343434, 9292
+console.log(repeatNumbers([[1, 2], [2, 3],])); // 11, 222
+console.log(repeatNumbers([[10, 4], [34, 6], [92, 2],])); // 10101010, 343434343434, 9292
 
 module.exports = repeatNumbers;
