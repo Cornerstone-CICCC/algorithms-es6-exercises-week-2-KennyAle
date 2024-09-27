@@ -8,24 +8,25 @@ Instruction
 Create a function named camelCase that will convert a string to camel case, and return the result.
 */
 
-const word = "asd"
-console.log(word)
-const letters = [...word]
-const [upperCase, ...rest] = letters
-console.log(upperCase.toUpperCase())
-// console.log([letters[0].toUpperCase(), ...letters])
+// const word = "asd"
+// const [firstLeter, ...rest] = word
+// let upperCase = [firstLeter.toUpperCase(), ...rest].join("")
+// console.log(upperCase)
 
-// const camelCase = function (input) {
-//   let sentence = input.split(" ")
-//   console.log(sentence)
-//   for (let index = 1; index < sentence.length; index++) {
-//     const element = sentence[index];
-//     console.log(element)
-//   }
-// };
+const camelCase = function (input) {
+    let sentence = input.split(" ")
+    let result = `${sentence[0]}`
+    for (let index = 1; index < sentence.length; index++) {
+        const word = [...sentence[index]]
+        const [firstLeter, ...rest] = word
+        let upperCase = [firstLeter.toUpperCase(), ...rest].join("")
+        result += upperCase
+    }
+    return result
+};
 
-// console.log(camelCase("this is a string")); // thisIsAString
-// console.log(camelCase("loopy cornerstone")); //loopyCornerstone
-// console.log(camelCase("supercalifragalisticexpialidocious")); // supercalifragalisticexpialidocious
+console.log(camelCase("this is a string")); // thisIsAString
+console.log(camelCase("loopy cornerstone")); //loopyCornerstone
+console.log(camelCase("supercalifragalisticexpialidocious")); // supercalifragalisticexpialidocious
 
-// module.exports = camelCase;
+module.exports = camelCase;
