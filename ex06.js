@@ -20,7 +20,45 @@ Note: There may be multiple available spots for a particular vehicle. It does no
 */
 
 const whereCanIPark = function (spots, vehicle) {
-  // Code here!
+  let coordinates = []
+  spots.forEach((element, index) => {
+    switch (vehicle) {
+      case "regular":
+        if (element.includes("R") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("R"))
+        }
+        break;
+      case "small":
+        if (element.includes("S") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("S"))
+        } else if (element.includes("R") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("R"))
+        }
+        break;
+      case "motorcycle":
+        if (element.includes("S") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("S"))
+        } else if (element.includes("R") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("R"))
+        } else if (element.includes("M") && coordinates.length < 2) {
+          coordinates.push(index)
+          coordinates.push(element.indexOf("M"))
+        }
+        break;
+    
+      default:
+        break;
+    }
+    
+    // console.log(element, index)
+    // console.log(element.indexOf("R"))
+  });
+  return coordinates.length > 0 ? coordinates.reverse() : false
 };
 
 console.log(
