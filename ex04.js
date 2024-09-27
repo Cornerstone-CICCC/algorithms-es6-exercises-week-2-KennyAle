@@ -7,14 +7,22 @@ Create a function named instructorWithLongestName that will receive an array of 
 
 const instructorWithLongestName = function (instructors) {
   let longestName = 0
-  let instructorsNames = instructors.filter((names, index) => {
-    if (names.name.split("").length > longestName) {
-      longestName = names.name.split("").length 
-    } 
+  let longestNamePerson
+  instructors.forEach(person => {
+    if (person.name.length > longestName) {
+      longestName = person.name.length
+      longestNamePerson = person
+    }
   })
-  return instructorsNames, longestName
-  // Put your solution here
+  return longestNamePerson
 };
+  // let instructorsNames = instructors.filter((person, index) => {
+  //   if (person.name.split("").length > longestName) {
+  //     longestName = person.name.split("").length 
+  //     longestNamePerson = person
+  //   } 
+  // })
+  // return longestNamePerson
 
 console.log(
   instructorWithLongestName([
@@ -25,12 +33,12 @@ console.log(
   ])
 ); //{name: "Jeremiah", course: "Web"}
 
-// console.log(
-//   instructorWithLongestName([
-//     { name: "Matthew", course: "Web" },
-//     { name: "David", course: "Mobile" },
-//     { name: "Domascus", course: "Web" },
-//   ])
-// ); //{name: "Domascus", course: "Web"}
+console.log(
+  instructorWithLongestName([
+    { name: "Matthew", course: "Web" },
+    { name: "David", course: "Mobile" },
+    { name: "Domascus", course: "Web" },
+  ])
+); //{name: "Domascus", course: "Web"}
 
 module.exports = instructorWithLongestName;
