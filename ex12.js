@@ -19,47 +19,50 @@ Note
 This one is a doozy! We might want to start by creating a helper function called ingredientCheck() that will take in one bakery at a time, along with the recipes.ingredients array to check if the given bakery possesses any of the ingredients from that recipe.
 
 */
+let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
+let bakeryB = ["milk", "butter", "cream cheese"];
+let recipes = [
+  {name: "Coconut Sponge Cake",ingredients: ["coconut", "cake base"],},
+  {name: "Persian Cheesecake",ingredients: ["saffron", "cream cheese"],},
+  {name: "Custard Surprise",ingredients: ["custard", "ground beef"],},
+];
+
+function ingredientCheck(bakeryA, recipes) {
+  let commonIng = []
+  recipes.forEach(ingredients => {
+    for(bakeryIngredients of bakeryA) {
+      if (ingredients.ingredients.includes(bakeryIngredients)){
+        console.log(ingredients)
+      }
+    }
+  });
+}
+
+console.log(ingredientCheck(bakeryA, recipes))
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
   // Code here!
 };
 
-let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
-let bakeryB = ["milk", "butter", "cream cheese"];
-let recipes = [
-  {
-    name: "Coconut Sponge Cake",
-    ingredients: ["coconut", "cake base"],
-  },
-  {
-    name: "Persian Cheesecake",
-    ingredients: ["saffron", "cream cheese"],
-  },
-  {
-    name: "Custard Surprise",
-    ingredients: ["custard", "ground beef"],
-  },
-];
-
 console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Persian Cheesecake
 
-bakeryA = ["potatoes", "bay leaf", "raisins"];
-bakeryB = ["red bean", "dijon mustard", "apples"];
-recipes = [
-  {
-    name: "Potato Ganache",
-    ingredients: ["potatoes", "chocolate"],
-  },
-  {
-    name: "Sweet Fish",
-    ingredients: ["anchovies", "honey"],
-  },
-  {
-    name: "Nima's Famous Dijon Raisins",
-    ingredients: ["dijon mustard", "raisins"],
-  },
-];
+// bakeryA = ["potatoes", "bay leaf", "raisins"];
+// bakeryB = ["red bean", "dijon mustard", "apples"];
+// recipes = [
+//   {
+//     name: "Potato Ganache",
+//     ingredients: ["potatoes", "chocolate"],
+//   },
+//   {
+//     name: "Sweet Fish",
+//     ingredients: ["anchovies", "honey"],
+//   },
+//   {
+//     name: "Nima's Famous Dijon Raisins",
+//     ingredients: ["dijon mustard", "raisins"],
+//   },
+// ];
 
-console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Nima's Famous Dijon Raisins
+// console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Nima's Famous Dijon Raisins
 
 module.exports = chooseRecipe;
