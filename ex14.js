@@ -23,7 +23,41 @@ Penny (1¢)
 */
 
 const calculateChange = function (total, cash) {
-  // Your code here
+  let change = cash - total
+  const denominations = {}
+
+  while (change > 0) {
+    if (change >= 2000) {
+      change -= 2000
+      denominations.twentyDollar = (denominations.twentyDollar || 0) + 1
+    } else if (change >= 1000) {
+      change -= 1000
+      denominations.tenDollar = (denominations.tenDollar || 0) + 1
+    } else if (change >= 500) {
+      change -= 500
+      denominations.fiveDollar = (denominations.fiveDollar || 0) + 1
+    } else if (change >= 200) {
+      change -= 200
+      denominations.twoDollar = (denominations.twoDollar || 0) + 1
+    } else if (change >= 100) {
+      change -= 100
+      denominations.oneDollar = (denominations.oneDollar || 0) + 1
+    } else if (change >= 25) {
+      change -= 25
+      denominations.quarter = (denominations.quarter || 0) + 1
+    } else if (change >= 10) {
+      change -= 10
+      denominations.dime = (denominations.dime || 0) + 1
+    } else if (change >= 5) {
+      change -= 5
+      denominations.nickel = (denominations.nickel || 0) + 1
+    } else if (change >= 1) {
+      change -= 1
+      denominations.penny = (denominations.penny || 0) + 1
+    }
+  }
+  
+  return denominations
 };
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
