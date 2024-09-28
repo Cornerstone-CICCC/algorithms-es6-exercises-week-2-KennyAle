@@ -35,13 +35,12 @@ const talkingCalendar = function (date) {
   } else {
     day = `${sepDate[2]}th`
   }
-  console.log(day)
-  console.log(`${months[sepDate[1] - 1]} ${day}, ${sepDate[0]}`)
+  return `${months[sepDate[1] - 1]} ${day}, ${sepDate[0]}`
 
 };
 
 console.log(talkingCalendar("2017/12/02")); // December 2nd, 2017
 console.log(talkingCalendar("2007/11/11")); // November 11th, 2007
-console.log(talkingCalendar("1987/08/23")); // August 24th, 1987
+console.log(talkingCalendar("1987/08/24")); // August 24th, 1987
 
 module.exports = talkingCalendar;
