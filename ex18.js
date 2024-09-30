@@ -21,9 +21,19 @@ And that's the output of the algorithm. We can then reverse the process to decry
 Instruction
 Create a function named squareCode that will receive a message, and return the secret square code version of the message.
 */
-
 const squareCode = function (message) {
-  // Put your solution here
+  let noSpaces = message.split(" ").join("")
+  let noSpacesArray = noSpaces.split("")
+  let numberCh = Math.ceil(Math.sqrt(noSpaces.length)) 
+  let squareCode = []
+  for (let i = 0; i < numberCh; i++) {
+    let squareCodeWords = []
+    for (let index = i; index < noSpacesArray.length; index += numberCh) {
+      squareCodeWords.push(noSpacesArray[index])
+    }
+    squareCode.push(squareCodeWords.join(""))
+  }
+  return squareCode.join(" ") 
 };
 
 console.log(squareCode("chill out")); // clu hlt io
