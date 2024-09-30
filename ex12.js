@@ -38,17 +38,9 @@ function ingredientCheck(bakeryA, recipes) {
   });
 }
 
-console.log(ingredientCheck(bakeryA, recipes))
-
-const chooseRecipe = function (bakeryA, bakeryB, recipes) {
-  // Code here!
-};
-
-console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Persian Cheesecake
-
-// bakeryA = ["potatoes", "bay leaf", "raisins"];
-// bakeryB = ["red bean", "dijon mustard", "apples"];
-// recipes = [
+// let bakeryA = ["potatoes", "bay leaf", "raisins"];
+// let bakeryB = ["red bean", "dijon mustard", "apples"];
+// let recipes = [
 //   {
 //     name: "Potato Ganache",
 //     ingredients: ["potatoes", "chocolate"],
@@ -63,6 +55,24 @@ console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Persian Cheesecake
 //   },
 // ];
 
-// console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Nima's Famous Dijon Raisins
+const chooseRecipe = function (bakeryA, bakeryB, recipes) {
+  let recipe = ""
+  recipes.forEach(ingredients => {
+    for(bakeryIngredients of bakeryA) {
+      if (ingredients.ingredients.includes(bakeryIngredients)){
+        for (bakeryIngredients of bakeryB) {
+          if (ingredients.ingredients.includes(bakeryIngredients)) {
+            recipe = ingredients.name
+          }
+        }
+      }
+    }
+  });
+  return recipe
+};
+
+console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Persian Cheesecake
+console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Nima's Famous Dijon Raisins
+
 
 module.exports = chooseRecipe;
