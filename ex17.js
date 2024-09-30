@@ -22,6 +22,18 @@ Create a function named urlDecode that will receive a URL encoded string, and re
 */
 
 const urlDecode = function (text) {
+  let url = {}
+  if (text.includes("&")) {
+    pairs = text.split("&")
+    pairs.forEach(key => {
+      keyValues = key.split("=")
+      url[keyValues[0]] = keyValues[1].split("%20").join(" ")
+    });
+  } else if (text.includes("=")) {
+    pairs = text.split("=")
+    url[pairs[0]] = pairs[1].split("%20").join(" ")
+  }
+  return url
   // Put your solution here
 };
 
