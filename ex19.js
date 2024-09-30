@@ -66,3 +66,65 @@ Instruction
 Create a function generateBoard which will return a nested array representing the board, containing the location of two queens.
 Create a function called queenThreat that will indicate whether or not the two queens are positioned so that they attack each other.
 */
+let whiteQueen = [0, 5];
+let blackQueen = [5, 0];
+const generatedBoard = function (whiteQueen, blackQueen) {
+  let board = []
+  for (let i = 0; i < 8; i++) {
+    let column = []
+    board.push(column)   
+    for (let j = 0; j < 8; j++) {
+      if (j === whiteQueen[0] && i === whiteQueen[1] || j === blackQueen[0] && i === blackQueen[1]) {
+        column.push(1)
+      } else {
+        column.push(0)
+      }
+    } 
+  } 
+  return board
+}
+
+const queenThreat = function (board) {
+  for (let index = 0; index < board.length; index++) {
+    let element = board[index]
+    let count = element.filter(num => num === 1).length
+    if (count > 1) {
+      return true
+    }
+  }
+
+  for (let col = 0; col < 8; col++) {
+    let count = 0
+    for (let row = 0; row < 8; row++) {
+      if (board[row][col] === 1) {
+        count++
+      }
+      if (count > 1) {
+        return true
+      }
+    }
+  }
+
+  let positions = []
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      if (board[row][col] === 1) {
+        positions.push([row, col])
+      }
+    }
+  }
+
+  for (let i = 0; i < positions.length; i++) {
+    for (let j = i + 1; j < positions.length; j++) {
+      let [row1, col1] = positions[i]
+      let [row2, col2] = positions[j]
+      if (Math.abs(row1 - row2) === Math.abs(col1 - col2)) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+console.log(generatedBoard(whiteQueen, blackQueen));
+console.log(queenThreat(generatedBoard(whiteQueen, blackQueen)))
